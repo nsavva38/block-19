@@ -11,7 +11,19 @@ const freelancers = [
   { name: "Prof. Goose", price: 72, occupation: "driver" },
 ];
 
+const randomFreelancers = [
+  { name: "Harry Potter", price: 47, occupation: "seeker"},
+  { name: "Ron Weasley", price: 31, occupation: "keeper"},
+  { name: "Hermione Granger", price: 64, occupation: "nerd"},
+];
 
+console.log(`randomFreelancers length: ${randomFreelancers.length}`)
+const randomNumber = Math.floor(Math.random() * randomFreelancers.length);
+console.log(`randomNumber: ${randomNumber}`);
+
+console.log(`new freelancer: ${randomFreelancers[randomNumber].name}`);
+
+freelancers.push(randomFreelancers[randomNumber]);
 const priceArray = [];
 
 
@@ -31,8 +43,11 @@ const intervalId = setInterval(() => {
   
   const contractor = document.createElement(`tr`);
   const contractorName = document.createElement(`td`);
+  contractorName.classList.add(`name`);
   const contractorOccupation = document.createElement(`td`);
+  contractorOccupation.classList.add(`occupation`);
   const contractorPrice = document.createElement(`td`);
+  contractorPrice.classList.add(`price`);
 
   contractorName.innerText = name;
   contractorOccupation.innerText = occupation;
@@ -79,5 +94,5 @@ averagePrice.innerText = `The average starting price is $${average}`;
   } else {
     index++;
   }
-}, 3000);
+}, 1000);
 
