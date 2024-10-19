@@ -12,22 +12,73 @@ const freelancers = [
 ];
 
 
+//grabs the price on the html page and converts into an array
 const tableList = document.querySelectorAll(`.contractor`);
 
-// const contractorArr = [...tableList];
-// console.log(contractorArr);
+const contractorArr = [...tableList];
+console.log(contractorArr);
+
+const priceArray = [];
+
+contractorArr.forEach((contractor, index) => {
+
+  const price = contractor.querySelector('.cPrice');
+  const priceString = price.innerText; // or innerText, depending on what you need
+  console.log(`Contractor ${index + 1}: ${priceString}`);
+  const priceValue = Number(priceString.substr(1));
+  console.log(priceValue);
+
+  priceArray.push(priceValue);
+
+});
 
 
-let i = 0;
+
+
+//takes the current priceArray and finds the average
+let average = 0;
+let total = 0;
+
+for( let i = 0; i < priceArray.length; i++ ) {
+
+  total = total + priceArray[i];
+  average = total / ( i + 1 );
+}
+
+
+const averagePrice = document.querySelector(`#average-price`);
+averagePrice.innerText = average;
+
+console.log(``);
+console.log(`average: ${average}`);
+console.log(``);
+
+
+
+
+// priceArray.push(price);
+
+// for( let i = 0; i < priceArray.length; i++ ) {
+
+//   total = total + priceArray[i];
+//   average = total / ( i + 1 );
+// }
+// console.log(`average: ${average}`);
+
+
+
+
+let index = 0;
 
 
 const intervalId = setInterval(() => {
-  console.log(`i = ${i}`);
+  console.log(`index = ${index}`);
   console.log(`freelancers length = ${freelancers.length}`)
+
   const table = document.querySelector(`table`);
-  const name = freelancers[i].name;
-  const occupation = freelancers[i].occupation;
-  const price = freelancers[i].price;
+  const name = freelancers[index].name;
+  const occupation = freelancers[index].occupation;
+  const price = freelancers[index].price;
   
   const contractor = document.createElement(`tr`);
   const contractorName = document.createElement(`td`);
@@ -44,17 +95,40 @@ const intervalId = setInterval(() => {
   contractor.classList.add(`contractor`);
 
   table.append(contractor);
-  console.log(`interval`);
 
 
   const contractors = document.querySelectorAll(`.contractor`);
   console.log(`contractors: `, contractors);
   console.log(contractors.length);
+  console.log(``);
+  console.log(``);
 
-  if(i >= freelancers.length - 1) {
+
+
+
+priceArray.push(price);
+console.log(priceArray);
+
+for( let i = contractors.length - 1; i < priceArray.length; i++ ) {
+
+
+  total = total + priceArray[i];
+  average = (total / ( i + 1 )).toFixed(2);
+}
+
+console.log(`average: ${average}`);
+
+averagePrice.innerText = average;
+
+
+
+
+
+
+  if(index >= freelancers.length - 1) {
     clearInterval(intervalId);
   } else {
-    i++;
+    index++;
   }
 }, 3000);
 
