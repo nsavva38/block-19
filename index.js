@@ -1,5 +1,3 @@
-console.log(`test`);
-
 const freelancers = [
   { name: "Dr. Slice", price: 25, occupation: "gardener" },
   { name: "Dr. Pressure", price: 51, occupation: "programmer" },
@@ -17,11 +15,7 @@ const randomFreelancers = [
   { name: "Hermione Granger", price: 64, occupation: "nerd"},
 ];
 
-console.log(`randomFreelancers length: ${randomFreelancers.length}`)
 const randomNumber = Math.floor(Math.random() * randomFreelancers.length);
-console.log(`randomNumber: ${randomNumber}`);
-
-console.log(`new freelancer: ${randomFreelancers[randomNumber].name}`);
 
 freelancers.push(randomFreelancers[randomNumber]);
 const priceArray = [];
@@ -33,9 +27,7 @@ let total = 0;
 
 
 const intervalId = setInterval(() => {
-  console.log(`index = ${index}`);
-  console.log(`freelancers length = ${freelancers.length}`)
-
+  
   const table = document.querySelector(`table`);
   const name = freelancers[index].name;
   let occupation = freelancers[index].occupation;
@@ -63,27 +55,16 @@ const intervalId = setInterval(() => {
 
 
   const contractors = document.querySelectorAll(`.contractor`);
-  console.log(`contractors: `, contractors);
-  console.log(`contractor length: ${contractors.length}`);
-  console.log(``);
-  console.log(``);
-
-
 
 
 priceArray.push(price);
-console.log(`priceArray length: ${priceArray.length}`);
-console.log(`new priceArray: ${priceArray}`);
 
 for( let i = contractors.length - 1; i < priceArray.length; i++ ) {
 
-  console.log(`i: ${i}`);
-  console.log(`priceArray[${i}]: ${priceArray[i]}`)
   total = total + priceArray[i];
   average = (total / ( i + 1 )).toFixed(2);
 }
 
-console.log(`average: ${average}`);
 
 const averagePrice = document.querySelector(`#average-price`);
 averagePrice.innerText = `The average starting price is $${average}`;
