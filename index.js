@@ -34,8 +34,8 @@ const intervalId = setInterval(() => {
   
   //grabbing key/value pairs and putting them into variables
   const name = freelancers[index].name;
-  let occupation = freelancers[index].occupation;
-  occupation = `${occupation[0].toUpperCase()}` + `${occupation.slice(1)}`;
+  let occupationLowerCase = freelancers[index].occupation;
+  const occupation = `${occupationLowerCase[0].toUpperCase()}` + `${occupationLowerCase.slice(1)}`;
   const price = freelancers[index].price;
   
   //creating html elements, storing them into variables, and creating a class within that element
