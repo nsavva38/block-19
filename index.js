@@ -12,63 +12,12 @@ const freelancers = [
 ];
 
 
-//grabs the price on the html page and converts into an array
-const tableList = document.querySelectorAll(`.contractor`);
-
-const contractorArr = [...tableList];
-console.log(contractorArr);
-
 const priceArray = [];
-
-contractorArr.forEach((contractor, index) => {
-
-  const price = contractor.querySelector('.cPrice');
-  const priceString = price.innerText; // or innerText, depending on what you need
-  console.log(`Contractor ${index + 1}: ${priceString}`);
-  const priceValue = Number(priceString.substr(1));
-  console.log(priceValue);
-
-  priceArray.push(priceValue);
-
-});
-
-
-
-
-//takes the current priceArray and finds the average
-let average = 0;
-let total = 0;
-
-for( let i = 0; i < priceArray.length; i++ ) {
-
-  total = total + priceArray[i];
-  average = total / ( i + 1 );
-}
-
-
-const averagePrice = document.querySelector(`#average-price`);
-averagePrice.innerText = average;
-
-console.log(``);
-console.log(`average: ${average}`);
-console.log(``);
-
-
-
-
-// priceArray.push(price);
-
-// for( let i = 0; i < priceArray.length; i++ ) {
-
-//   total = total + priceArray[i];
-//   average = total / ( i + 1 );
-// }
-// console.log(`average: ${average}`);
-
-
 
 
 let index = 0;
+let average = 0;
+let total = 0;
 
 
 const intervalId = setInterval(() => {
@@ -99,7 +48,7 @@ const intervalId = setInterval(() => {
 
   const contractors = document.querySelectorAll(`.contractor`);
   console.log(`contractors: `, contractors);
-  console.log(contractors.length);
+  console.log(`contractor length: ${contractors.length}`);
   console.log(``);
   console.log(``);
 
@@ -107,18 +56,21 @@ const intervalId = setInterval(() => {
 
 
 priceArray.push(price);
-console.log(priceArray);
+console.log(`priceArray length: ${priceArray.length}`);
+console.log(`new priceArray: ${priceArray}`);
 
-for( let i = contractors.length - 1; i < priceArray.length; i++ ) {
+for( let i = contractors.length - 2; i < priceArray.length; i++ ) {
 
-
+  console.log(`i: ${i}`);
+  console.log(`priceArray[${i}]: ${priceArray[i]}`)
   total = total + priceArray[i];
   average = (total / ( i + 1 )).toFixed(2);
 }
 
 console.log(`average: ${average}`);
 
-averagePrice.innerText = average;
+const averagePrice = document.querySelector(`#average-price`);
+averagePrice.innerText = `The average starting price is $${average}`;
 
 
 
