@@ -38,7 +38,8 @@ const intervalId = setInterval(() => {
 
   const table = document.querySelector(`table`);
   const name = freelancers[index].name;
-  const occupation = freelancers[index].occupation;
+  let occupation = freelancers[index].occupation;
+  occupation = `${occupation[0].toUpperCase()}` + `${occupation.slice(1)}`;
   const price = freelancers[index].price;
   
   const contractor = document.createElement(`tr`);
@@ -51,7 +52,7 @@ const intervalId = setInterval(() => {
 
   contractorName.innerText = name;
   contractorOccupation.innerText = occupation;
-  contractorPrice.innerText = price;
+  contractorPrice.innerText = `$${price}`;
 
   contractor.append(contractorName);
   contractor.append(contractorOccupation);
