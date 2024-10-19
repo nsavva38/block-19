@@ -59,7 +59,7 @@ priceArray.push(price);
 console.log(`priceArray length: ${priceArray.length}`);
 console.log(`new priceArray: ${priceArray}`);
 
-for( let i = contractors.length - 2; i < priceArray.length; i++ ) {
+for( let i = contractors.length - 1; i < priceArray.length; i++ ) {
 
   console.log(`i: ${i}`);
   console.log(`priceArray[${i}]: ${priceArray[i]}`)
@@ -71,9 +71,6 @@ console.log(`average: ${average}`);
 
 const averagePrice = document.querySelector(`#average-price`);
 averagePrice.innerText = `The average starting price is $${average}`;
-
-
-
 
 
 
